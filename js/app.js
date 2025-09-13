@@ -18,7 +18,7 @@ function init(){
 init()
 function deleteEL(id){
     fetch(`https://json-api.uz/api/project/fn43/cars/${id}`,{
-        method:"DELETE"
+        method:"DELETE",
     })
     .then(  (res)=>{
         init()
