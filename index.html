@@ -1,95 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+
+  <body>
+  
+    <form id="form" class="hidden text-center">
+      <div>
+        <input class="w-60 h-8 rounded-xl pl-4" type="text" placeholder = "Mashina nomini kiriting" name="name" required>
+      </div>
+      <div>
+        <textarea class="w-60 h-30 mt-4 rounded-xl pl-4" placeholder="Mashina haqida ma'lumot kiriting" name="description" required></textarea>
+      </div>
+      <div>
+        <input class="w-60 h-8 mt-2 rounded-xl pl-4" placeholder="Mashina narxini kiriting" type="number" name="price" required>
+      </div>
+      <div>
+        <select class="mt-2 rounded-xl" name="brand" required>
+          <option>Mazda</option>
+          <option>Chevrolet</option>
+          <option>Mercedes-Benz</option>
+          <option>Toyota</option>
+          <option>BMW</option>
+          <option>Lamborghini</option>
+          <option>BYD</option>
+          <option>Ferrari</option>
+          <option>Jaguar</option>
+          <option>Ford</option>
+          <option>Hummer</option>
+          <option>Volvo</option>
+          <option>Honda</option>
+          <option>Hyundai</option>
+          <option>Kia</option>
+          <option>Porsche</option>
+          <option>Audi</option>
+          <option>Nissan</option>
+          <option>Lexus</option>
+          <option>Jeep</option>
+          <option>Tesla</option>
+          <option>Volkswagen</option>
+          <option>Subaru</option>
+        </select>
+      </div>
+      <div>
+        <input class="w-60 h-8 mt-2 rounded-xl pl-4" placeholder="Kategoriyani yozing" type="text" name="category" required>
+      </div>
+
+      <div id="addBtn" class="mt-4">
+        <button type="reset" class="btn btn-soft btn-error h-8 text-[16px]">Tozalash</button>
+        <button type="submit" id="addB" class="btn btn-soft btn-success h-8 text-[16px]">Tasdiqlash</button>
+      </div>
+      <button id="editBtn" class="hidden mt-4 btn btn-soft btn-primary" type="submit">Tahrirlash</button>
+      
+    </form>
+
+
+
 
     <div id="loading">
-        <div class="flex w-52 flex-col gap-4">
-  <div class="skeleton h-12 w-full"></div>
-  <div class="skeleton h-4 w-108"></div>
-  <div class="skeleton h-4 w-full"></div>
-  <div class="skeleton h-4 w-full"></div>
-</div>
-
-        <div class="flex w-52 flex-col gap-4">
-  <div class="skeleton h-12 w-full"></div>
-  <div class="skeleton h-4 w-108"></div>
-  <div class="skeleton h-4 w-full"></div>
-  <div class="skeleton h-4 w-full"></div>
-</div>
-
-        <div class="flex w-52 flex-col gap-4">
-  <div class="skeleton h-12 w-full"></div>
-  <div class="skeleton h-4 w-108"></div>
-  <div class="skeleton h-4 w-full"></div>
-  <div class="skeleton h-4 w-full"></div>
-</div>
-
-        <div class="flex w-52 flex-col gap-4">
-  <div class="skeleton h-12 w-full"></div>
-  <div class="skeleton h-4 w-108"></div>
-  <div class="skeleton h-4 w-full"></div>
-  <div class="skeleton h-4 w-full"></div>
-</div>
-
-        <div class="flex w-52 flex-col gap-4">
-  <div class="skeleton h-12 w-full"></div>
-  <div class="skeleton h-4 w-108"></div>
-  <div class="skeleton h-4 w-full"></div>
-  <div class="skeleton h-4 w-full"></div>
-</div>
-
-        <div class="flex w-52 flex-col gap-4">
-  <div class="skeleton h-12 w-full"></div>
-  <div class="skeleton h-4 w-108"></div>
-  <div class="skeleton h-4 w-full"></div>
-  <div class="skeleton h-4 w-full"></div>
-</div>
-
-        <div class="flex w-52 flex-col gap-4">
-  <div class="skeleton h-12 w-full"></div>
-  <div class="skeleton h-4 w-108"></div>
-  <div class="skeleton h-4 w-full"></div>
-  <div class="skeleton h-4 w-full"></div>
-</div>
-
-        <div class="flex w-52 flex-col gap-4">
-  <div class="skeleton h-12 w-full"></div>
-  <div class="skeleton h-4 w-108"></div>
-  <div class="skeleton h-4 w-full"></div>
-  <div class="skeleton h-4 w-full"></div>
-</div>
-
-        <div class="flex w-52 flex-col gap-4">
-  <div class="skeleton h-12 w-full"></div>
-  <div class="skeleton h-4 w-108"></div>
-  <div class="skeleton h-4 w-full"></div>
-  <div class="skeleton h-4 w-full"></div>
-</div>
-
+      
+      
     </div>
 
-    <div id="container"  class="grid md:grid-cols-4 grid-cols-2 md:gap-4 gap-2 m-2 md:mt-6">
+    <h1 id="error" class="hidden font-bold md:text-[34px] text-[22px] text-center pt-8">Xatolik yuz berdi</h1>
+
+    <div id="container" class="grid md:grid-cols-4 grid-cols-2 md:gap-4 gap-2 m-2 md:mt-6" ></div>
+    
+    <div id="prevNext" class="text-center m-4">
+      <button id="prev" class="border-[black] border-[1px] w-[80px] h-[30px] rounded-xl">Prev</button>
+      <button id="next" class="border-[black] border-[1px] w-[80px] h-[30px] rounded-xl">Next</button>
     </div>
-
-
 
     <template id="cardTemp">
-        <div>
-            <h2></h2>
-            <p></p>
-            <mark> </mark>
-            <button >delete</button>
+      <div class="p-4  rounded-[8px] ">
+        <h2 class="text-[black] font-bold text-[20px]"></h2>
+        <p class="pb-2 tracking-[0.5px]"></p>
+        <mark class=""></mark><br>
+        <i class="font-medium pt-2 md:text-[18px]"></i><br>
+        <div class="flex mt-2 gap-2">
+          <button class="edit-btn">Edit</button>
+          <button class="delete-btn">Delete</button>
         </div>
+      </div>
     </template>
     <script src="./js/app.js"></script>
 
-    
-</body>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+  </body>
 </html>
